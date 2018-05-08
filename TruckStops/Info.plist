@@ -2,6 +2,19 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>TruckStops would like to access your location in order to find stops near you.</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>TruckStops would like to access your location in order to find stops near you.</string>
+	<key>NSLocationUsageDescription</key>
+	<string>TruckStops would like to access your location in order to find stops near you.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>TruckStops would like to access your location in order to find stops near you.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>

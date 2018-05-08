@@ -7,14 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A87ADCE20A0EEC500E56663 /* TruckStopAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A87ADCD20A0EEC500E56663 /* TruckStopAnnotationView.m */; };
+		9A87ADD020A0F9C600E56663 /* location-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A87ADCF20A0F9C600E56663 /* location-selected.png */; };
+		9A87ADD420A1DFD600E56663 /* UserLocationMapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A87ADD320A1DFD600E56663 /* UserLocationMapPin.swift */; };
+		9A87ADD620A1E51900E56663 /* truck.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A87ADD520A1E51900E56663 /* truck.png */; };
 		9AF4FC77209B5FC0005841C1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF4FC76209B5FC0005841C1 /* AppDelegate.m */; };
 		9AF4FC7A209B5FC0005841C1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF4FC79209B5FC0005841C1 /* ViewController.m */; };
 		9AF4FC7D209B5FC0005841C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AF4FC7B209B5FC0005841C1 /* Main.storyboard */; };
 		9AF4FC7F209B5FC1005841C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AF4FC7E209B5FC1005841C1 /* Assets.xcassets */; };
 		9AF4FC82209B5FC1005841C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AF4FC80209B5FC1005841C1 /* LaunchScreen.storyboard */; };
 		9AF4FC85209B5FC1005841C1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF4FC84209B5FC1005841C1 /* main.m */; };
-		9AF4FC8F209B5FC1005841C1 /* TruckStopsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF4FC8E209B5FC1005841C1 /* TruckStopsTests.m */; };
+		9AF4FC8F209B5FC1005841C1 /* TruckStopsModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF4FC8E209B5FC1005841C1 /* TruckStopsModelTests.m */; };
 		9AF4FC9A209B5FC1005841C1 /* TruckStopsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF4FC99209B5FC1005841C1 /* TruckStopsUITests.m */; };
+		9AF4FCA9209B618B005841C1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AF4FCA8209B618B005841C1 /* MapKit.framework */; };
+		9AF4FCAB209B619A005841C1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AF4FCAA209B619A005841C1 /* CoreLocation.framework */; };
+		9AF4FCB2209B6CA3005841C1 /* HolderOfTruckStops.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF4FCB1209B6CA3005841C1 /* HolderOfTruckStops.swift */; };
+		9AF4FCB4209B6CD0005841C1 /* TruckStopAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF4FCB3209B6CD0005841C1 /* TruckStopAnnotation.swift */; };
+		9AF4FCBB209C5319005841C1 /* RestAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF4FCBA209C5319005841C1 /* RestAPI.m */; };
+		9AF4FCBD209C57C8005841C1 /* TruckStopsLiveAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF4FCBC209C57C8005841C1 /* TruckStopsLiveAPITests.m */; };
+		9AF4FCFB209F3946005841C1 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AF4FCFA209F3946005841C1 /* location.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +46,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9A87ADCC20A0EEC500E56663 /* TruckStopAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TruckStopAnnotationView.h; sourceTree = "<group>"; };
+		9A87ADCD20A0EEC500E56663 /* TruckStopAnnotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TruckStopAnnotationView.m; sourceTree = "<group>"; };
+		9A87ADCF20A0F9C600E56663 /* location-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location-selected.png"; sourceTree = "<group>"; };
+		9A87ADD320A1DFD600E56663 /* UserLocationMapPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationMapPin.swift; sourceTree = "<group>"; };
+		9A87ADD520A1E51900E56663 /* truck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = truck.png; sourceTree = "<group>"; };
 		9AF4FC72209B5FC0005841C1 /* TruckStops.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TruckStops.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AF4FC75209B5FC0005841C1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9AF4FC76209B5FC0005841C1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -46,11 +62,20 @@
 		9AF4FC83209B5FC1005841C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9AF4FC84209B5FC1005841C1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9AF4FC8A209B5FC1005841C1 /* TruckStopsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TruckStopsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9AF4FC8E209B5FC1005841C1 /* TruckStopsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TruckStopsTests.m; sourceTree = "<group>"; };
+		9AF4FC8E209B5FC1005841C1 /* TruckStopsModelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TruckStopsModelTests.m; sourceTree = "<group>"; };
 		9AF4FC90209B5FC1005841C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9AF4FC95209B5FC1005841C1 /* TruckStopsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TruckStopsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AF4FC99209B5FC1005841C1 /* TruckStopsUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TruckStopsUITests.m; sourceTree = "<group>"; };
 		9AF4FC9B209B5FC1005841C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9AF4FCA8209B618B005841C1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		9AF4FCAA209B619A005841C1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		9AF4FCB0209B6CA3005841C1 /* TruckStops-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TruckStops-Bridging-Header.h"; sourceTree = "<group>"; };
+		9AF4FCB1209B6CA3005841C1 /* HolderOfTruckStops.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolderOfTruckStops.swift; sourceTree = "<group>"; };
+		9AF4FCB3209B6CD0005841C1 /* TruckStopAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruckStopAnnotation.swift; sourceTree = "<group>"; };
+		9AF4FCB9209C5319005841C1 /* RestAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RestAPI.h; sourceTree = "<group>"; };
+		9AF4FCBA209C5319005841C1 /* RestAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RestAPI.m; sourceTree = "<group>"; };
+		9AF4FCBC209C57C8005841C1 /* TruckStopsLiveAPITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TruckStopsLiveAPITests.m; sourceTree = "<group>"; };
+		9AF4FCFA209F3946005841C1 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +83,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AF4FCAB209B619A005841C1 /* CoreLocation.framework in Frameworks */,
+				9AF4FCA9209B618B005841C1 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +105,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9A87ADCB20A0EA7300E56663 /* Callouts */ = {
+			isa = PBXGroup;
+			children = (
+				9A87ADCC20A0EEC500E56663 /* TruckStopAnnotationView.h */,
+				9A87ADCD20A0EEC500E56663 /* TruckStopAnnotationView.m */,
+			);
+			path = Callouts;
+			sourceTree = "<group>";
+		};
+		9A87ADD120A1DE8700E56663 /* TruckStop */ = {
+			isa = PBXGroup;
+			children = (
+				9A87ADCF20A0F9C600E56663 /* location-selected.png */,
+				9AF4FCFA209F3946005841C1 /* location.png */,
+				9AF4FCB3209B6CD0005841C1 /* TruckStopAnnotation.swift */,
+			);
+			path = TruckStop;
+			sourceTree = "<group>";
+		};
+		9A87ADD220A1DE9600E56663 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				9A87ADD520A1E51900E56663 /* truck.png */,
+				9A87ADD320A1DFD600E56663 /* UserLocationMapPin.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
 		9AF4FC69209B5FBF005841C1 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +140,7 @@
 				9AF4FC8D209B5FC1005841C1 /* TruckStopsTests */,
 				9AF4FC98209B5FC1005841C1 /* TruckStopsUITests */,
 				9AF4FC73209B5FC0005841C1 /* Products */,
+				9AF4FCA7209B618B005841C1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,13 +157,11 @@
 		9AF4FC74209B5FC0005841C1 /* TruckStops */ = {
 			isa = PBXGroup;
 			children = (
-				9AF4FC75209B5FC0005841C1 /* AppDelegate.h */,
-				9AF4FC76209B5FC0005841C1 /* AppDelegate.m */,
-				9AF4FC78209B5FC0005841C1 /* ViewController.h */,
-				9AF4FC79209B5FC0005841C1 /* ViewController.m */,
-				9AF4FC7B209B5FC0005841C1 /* Main.storyboard */,
+				9AF4FCAD209B623B005841C1 /* UI */,
+				9AF4FCAF209B62A0005841C1 /* Main */,
+				9AF4FCAC209B6231005841C1 /* App */,
+				9AF4FCAE209B624F005841C1 /* Models */,
 				9AF4FC7E209B5FC1005841C1 /* Assets.xcassets */,
-				9AF4FC80209B5FC1005841C1 /* LaunchScreen.storyboard */,
 				9AF4FC83209B5FC1005841C1 /* Info.plist */,
 				9AF4FC84209B5FC1005841C1 /* main.m */,
 			);
@@ -117,7 +171,8 @@
 		9AF4FC8D209B5FC1005841C1 /* TruckStopsTests */ = {
 			isa = PBXGroup;
 			children = (
-				9AF4FC8E209B5FC1005841C1 /* TruckStopsTests.m */,
+				9AF4FC8E209B5FC1005841C1 /* TruckStopsModelTests.m */,
+				9AF4FCBC209C57C8005841C1 /* TruckStopsLiveAPITests.m */,
 				9AF4FC90209B5FC1005841C1 /* Info.plist */,
 			);
 			path = TruckStopsTests;
@@ -130,6 +185,64 @@
 				9AF4FC9B209B5FC1005841C1 /* Info.plist */,
 			);
 			path = TruckStopsUITests;
+			sourceTree = "<group>";
+		};
+		9AF4FCA7209B618B005841C1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9AF4FCAA209B619A005841C1 /* CoreLocation.framework */,
+				9AF4FCA8209B618B005841C1 /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9AF4FCAC209B6231005841C1 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				9AF4FCB0209B6CA3005841C1 /* TruckStops-Bridging-Header.h */,
+				9AF4FC75209B5FC0005841C1 /* AppDelegate.h */,
+				9AF4FC76209B5FC0005841C1 /* AppDelegate.m */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		9AF4FCAD209B623B005841C1 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				9AF4FC80209B5FC1005841C1 /* LaunchScreen.storyboard */,
+				9AF4FC7B209B5FC0005841C1 /* Main.storyboard */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		9AF4FCAE209B624F005841C1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9AF4FCB9209C5319005841C1 /* RestAPI.h */,
+				9AF4FCBA209C5319005841C1 /* RestAPI.m */,
+				9AF4FCB1209B6CA3005841C1 /* HolderOfTruckStops.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9AF4FCAF209B62A0005841C1 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				9A87ADCB20A0EA7300E56663 /* Callouts */,
+				9AF4FCF9209DC0FB005841C1 /* Pins */,
+				9AF4FC78209B5FC0005841C1 /* ViewController.h */,
+				9AF4FC79209B5FC0005841C1 /* ViewController.m */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		9AF4FCF9209DC0FB005841C1 /* Pins */ = {
+			isa = PBXGroup;
+			children = (
+				9A87ADD220A1DE9600E56663 /* User */,
+				9A87ADD120A1DE8700E56663 /* TruckStop */,
+			);
+			path = Pins;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +312,7 @@
 				TargetAttributes = {
 					9AF4FC71209B5FC0005841C1 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 0930;
 					};
 					9AF4FC89209B5FC1005841C1 = {
 						CreatedOnToolsVersion = 9.3;
@@ -238,6 +352,9 @@
 				9AF4FC82209B5FC1005841C1 /* LaunchScreen.storyboard in Resources */,
 				9AF4FC7F209B5FC1005841C1 /* Assets.xcassets in Resources */,
 				9AF4FC7D209B5FC0005841C1 /* Main.storyboard in Resources */,
+				9A87ADD020A0F9C600E56663 /* location-selected.png in Resources */,
+				9AF4FCFB209F3946005841C1 /* location.png in Resources */,
+				9A87ADD620A1E51900E56663 /* truck.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,8 +379,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A87ADD420A1DFD600E56663 /* UserLocationMapPin.swift in Sources */,
+				9AF4FCB2209B6CA3005841C1 /* HolderOfTruckStops.swift in Sources */,
 				9AF4FC7A209B5FC0005841C1 /* ViewController.m in Sources */,
+				9AF4FCB4209B6CD0005841C1 /* TruckStopAnnotation.swift in Sources */,
+				9AF4FCBB209C5319005841C1 /* RestAPI.m in Sources */,
 				9AF4FC85209B5FC1005841C1 /* main.m in Sources */,
+				9A87ADCE20A0EEC500E56663 /* TruckStopAnnotationView.m in Sources */,
 				9AF4FC77209B5FC0005841C1 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,7 +394,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AF4FC8F209B5FC1005841C1 /* TruckStopsTests.m in Sources */,
+				9AF4FCBD209C57C8005841C1 /* TruckStopsLiveAPITests.m in Sources */,
+				9AF4FC8F209B5FC1005841C1 /* TruckStopsModelTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,7 +556,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 79GK225UV2;
 				INFOPLIST_FILE = TruckStops/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -442,6 +567,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simple.TruckStops;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TruckStops/App/TruckStops-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "TruckStops-Swift.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -450,7 +579,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 79GK225UV2;
 				INFOPLIST_FILE = TruckStops/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -459,6 +590,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simple.TruckStops;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TruckStops/App/TruckStops-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "TruckStops-Swift.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -466,9 +600,16 @@
 		9AF4FCA2209B5FC1005841C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = 79GK225UV2;
+				HEADER_SEARCH_PATHS = (
+					$CONFIGURATION_TEMP_DIR/TruckStops.build/DerivedSources,
+					in,
+					it.,
+				);
 				INFOPLIST_FILE = TruckStopsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -476,6 +617,7 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simple.TruckStopsTests;
+				PRODUCT_MODULE_NAME = TruckStops;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TruckStops.app/TruckStops";
@@ -485,9 +627,16 @@
 		9AF4FCA3209B5FC1005841C1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = 79GK225UV2;
+				HEADER_SEARCH_PATHS = (
+					$CONFIGURATION_TEMP_DIR/TruckStops.build/DerivedSources,
+					in,
+					it.,
+				);
 				INFOPLIST_FILE = TruckStopsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -495,6 +644,7 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simple.TruckStopsTests;
+				PRODUCT_MODULE_NAME = TruckStops;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TruckStops.app/TruckStops";
@@ -504,6 +654,7 @@
 		9AF4FCA5209B5FC1005841C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 79GK225UV2;
 				INFOPLIST_FILE = TruckStopsUITests/Info.plist;
@@ -522,6 +673,7 @@
 		9AF4FCA6209B5FC1005841C1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 79GK225UV2;
 				INFOPLIST_FILE = TruckStopsUITests/Info.plist;

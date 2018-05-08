@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="hBF-Vh-Xut">
+                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="XlG-qm-ZJP"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="VUP-IS-Se2"/>
+                                </connections>
+                            </searchBar>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o80-X7-69x">
+                                <rect key="frame" x="0.0" y="76" width="375" height="591"/>
+                            </mapView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5Ef-Ow-Q7V">
+                                <rect key="frame" x="251" y="619" width="108" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="AUJ-R3-GVf"/>
+                                    <constraint firstAttribute="width" constant="172" id="ahU-05-2Eg"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Map"/>
+                                    <segment title="Satellite"/>
+                                </segments>
+                                <connections>
+                                    <action selector="switchMapMode:" destination="BYZ-38-t0r" eventType="valueChanged" id="I1c-FF-Ma1"/>
+                                </connections>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="duo-us-2CE">
+                                <rect key="frame" x="16" y="94" width="54" height="30"/>
+                                <color key="backgroundColor" red="0.60368223870000004" green="0.80741214510000003" blue="0.66640028480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="HPA-Lf-CJv"/>
+                                    <constraint firstAttribute="width" constant="54" id="hZ7-dK-Hn6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="User">
+                                    <color key="titleColor" red="1" green="0.98779541709999996" blue="0.97095325040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="zoomToUser:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tby-pg-ssy"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Iv7-Zg-Zg3">
+                                <rect key="frame" x="210" y="94" width="149" height="29"/>
+                                <color key="backgroundColor" red="0.33388568431993049" green="0.85307620763778691" blue="0.43209483437012702" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="5kp-5x-75b"/>
+                                    <constraint firstAttribute="width" constant="149" id="ckk-Ch-Ym7"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Track"/>
+                                    <segment title="Don't track"/>
+                                </segments>
+                                <color key="tintColor" red="0.2783700111907374" green="0.40259977051356571" blue="0.85307620763778691" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="userTrackingChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Vyb-yz-GOV"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Iv7-Zg-Zg3" firstAttribute="top" secondItem="hBF-Vh-Xut" secondAttribute="bottom" constant="18" id="0oj-GF-d5T"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Iv7-Zg-Zg3" secondAttribute="trailing" constant="16" id="1fK-IJ-c0E"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5Ef-Ow-Q7V" secondAttribute="trailing" constant="16" id="6VU-v3-omg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="5Ef-Ow-Q7V" secondAttribute="bottom" constant="20" id="7K9-v8-yoi"/>
+                            <constraint firstItem="hBF-Vh-Xut" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7wo-0s-FZ2"/>
+                            <constraint firstItem="o80-X7-69x" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="MVe-td-zXc"/>
+                            <constraint firstItem="hBF-Vh-Xut" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Mr9-bx-b5C"/>
+                            <constraint firstItem="o80-X7-69x" firstAttribute="top" secondItem="hBF-Vh-Xut" secondAttribute="bottom" id="RFO-Ri-5BI"/>
+                            <constraint firstItem="hBF-Vh-Xut" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="SrY-dE-WAF"/>
+                            <constraint firstItem="duo-us-2CE" firstAttribute="top" secondItem="hBF-Vh-Xut" secondAttribute="bottom" constant="18" id="c5w-hA-9j3"/>
+                            <constraint firstItem="o80-X7-69x" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="hg3-Fu-3eb"/>
+                            <constraint firstItem="o80-X7-69x" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="oBr-6M-DRd"/>
+                            <constraint firstItem="duo-us-2CE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="qj7-Ob-0aF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapMode" destination="5Ef-Ow-Q7V" id="quG-FQ-8HR"/>
+                        <outlet property="searchBar" destination="hBF-Vh-Xut" id="9QW-Vp-KQh"/>
+                        <outlet property="stopsMap" destination="o80-X7-69x" id="DcF-td-RM0"/>
+                        <outlet property="userTrackingMode" destination="Iv7-Zg-Zg3" id="G4i-bH-zD8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="117.59999999999999" y="117.39130434782609"/>
+        </scene>
+    </scenes>
+</document>
