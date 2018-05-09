@@ -9,8 +9,6 @@
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
 
-#import "EnhancedMapView.h"
-
 #import "ViewController.h"
 #import "RestAPI.h"
 #import "TruckStopAnnotationView.h"
@@ -24,7 +22,7 @@ typedef enum {
 
 @interface ViewController () <MKMapViewDelegate, UISearchBarDelegate, CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (weak, nonatomic) IBOutlet EnhancedMapView *stopsMap;
+@property (weak, nonatomic) IBOutlet MKMapView *stopsMap;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *mapMode;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *userTrackingMode;
 

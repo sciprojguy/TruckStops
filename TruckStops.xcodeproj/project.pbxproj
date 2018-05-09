@@ -14,7 +14,6 @@
 		9A87ADDB20A2E14200E56663 /* location-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A87ADD820A2E14200E56663 /* location-selected.png */; };
 		9A87ADDC20A2E14200E56663 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A87ADD920A2E14200E56663 /* location.png */; };
 		9A87ADE220A328DC00E56663 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A87ADE120A328DC00E56663 /* Assets.xcassets */; };
-		9A87ADE520A3327000E56663 /* EnhancedMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A87ADE420A3327000E56663 /* EnhancedMapView.m */; };
 		9A87ADE820A3329D00E56663 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A87ADE720A3329D00E56663 /* Settings.swift */; };
 		9A87ADEA20A365D700E56663 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9A87ADE920A365D700E56663 /* README.txt */; };
 		9AF4FC77209B5FC0005841C1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF4FC76209B5FC0005841C1 /* AppDelegate.m */; };
@@ -59,8 +58,6 @@
 		9A87ADD920A2E14200E56663 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
 		9A87ADDA20A2E14200E56663 /* TruckStopAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TruckStopAnnotation.swift; sourceTree = "<group>"; };
 		9A87ADE120A328DC00E56663 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		9A87ADE320A3327000E56663 /* EnhancedMapView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnhancedMapView.h; sourceTree = "<group>"; };
-		9A87ADE420A3327000E56663 /* EnhancedMapView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EnhancedMapView.m; sourceTree = "<group>"; };
 		9A87ADE720A3329D00E56663 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		9A87ADE920A365D700E56663 /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		9AF4FC72209B5FC0005841C1 /* TruckStops.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TruckStops.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,13 +150,13 @@
 			name = TruckStop;
 			sourceTree = "<group>";
 		};
-		9A87ADE620A3327F00E56663 /* Map */ = {
+		9A87ADEB20A37A9A00E56663 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				9A87ADE320A3327000E56663 /* EnhancedMapView.h */,
-				9A87ADE420A3327000E56663 /* EnhancedMapView.m */,
+				9AF4FC78209B5FC0005841C1 /* ViewController.h */,
+				9AF4FC79209B5FC0005841C1 /* ViewController.m */,
 			);
-			path = Map;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		9AF4FC69209B5FBF005841C1 = {
@@ -187,6 +184,7 @@
 			children = (
 				9AF4FCAD209B623B005841C1 /* UI */,
 				9AF4FCAF209B62A0005841C1 /* Main */,
+				9A87ADEB20A37A9A00E56663 /* ViewController */,
 				9AF4FCAC209B6231005841C1 /* App */,
 				9AF4FCAE209B624F005841C1 /* Models */,
 				9A87ADE120A328DC00E56663 /* Assets.xcassets */,
@@ -249,11 +247,8 @@
 		9AF4FCAF209B62A0005841C1 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				9A87ADE620A3327F00E56663 /* Map */,
 				9A87ADCB20A0EA7300E56663 /* Callouts */,
 				9AF4FCF9209DC0FB005841C1 /* Pins */,
-				9AF4FC78209B5FC0005841C1 /* ViewController.h */,
-				9AF4FC79209B5FC0005841C1 /* ViewController.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -404,7 +399,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A87ADE520A3327000E56663 /* EnhancedMapView.m in Sources */,
 				9A87ADD420A1DFD600E56663 /* UserLocationMapPin.swift in Sources */,
 				9AF4FCB2209B6CA3005841C1 /* HolderOfTruckStops.swift in Sources */,
 				9AF4FC7A209B5FC0005841C1 /* ViewController.m in Sources */,
