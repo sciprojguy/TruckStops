@@ -58,7 +58,8 @@
     XCTAssertNotNil(holder, @"Unable to allocate HolderOfTruckStops");
     XCTAssertFalse( 0 == [holder numberOfPins], @"No pins");
     
-    NSArray *pins = [holder pins];
+    CLLocation *loc = [[CLLocation alloc] initWithLatitude:tampaLat longitude:tampaLon];
+    NSArray *pins = [holder pinsWithContaining:@"" userLocation:loc];
     XCTAssertNotNil(pins, @"Pins is nil");
     
     XCTAssertEqual([holder numberOfPins], pins.count, @"Count mismatch");
@@ -95,7 +96,8 @@
     XCTAssertNotNil(holder, @"Unable to allocate HolderOfTruckStops");
     XCTAssertFalse( 0 == [holder numberOfPins], @"No pins");
     
-    NSArray *pins = [holder pins];
+    CLLocation *loc = [[CLLocation alloc] initWithLatitude:tampaLat longitude:tampaLon];
+    NSArray *pins = [holder pinsWithContaining:@"" userLocation:loc];
     XCTAssertNotNil(pins, @"Pins is nil");
     
     XCTAssertEqual([holder numberOfPins], pins.count, @"Count mismatch");

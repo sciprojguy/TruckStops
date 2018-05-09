@@ -37,7 +37,7 @@
 
     __block NSError *connectionError = nil;
     
-    NSString *urlString = [[NSString alloc] initWithFormat:@"http://webapp.transflodev.com/svc1.transflomobile.com/api/v3/stations/%@", @(miles)];
+    NSString *urlString = [[NSString alloc] initWithFormat:@"http://webapp.transflodev.com/svc1.transflomobile.com/api/v3/stations/%.0f", miles];
     NSURL *url = [NSURL URLWithString:urlString];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];

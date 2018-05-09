@@ -9,6 +9,10 @@
 import UIKit
 import MapKit
 
+func miles(meters:Double) -> Double {
+    return meters * 0.000621371;
+}
+
 @objc class TruckStop : NSObject, MKAnnotation {
     var title:String?       //name
     var subtitle:String?
@@ -20,6 +24,7 @@ import MapKit
     var state:String?
     var country:String?
     var zip:String?
+    var distance:String?
     override init() {
         self.coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
         self.title = nil
@@ -31,30 +36,15 @@ import MapKit
         self.state = nil
         self.country = nil
         self.zip = nil
+        self.distance = nil
         super.init()
     }
     
-    convenience init(truckStopDict:[String:Any]) {
+    convenience init(truckStopDict:[String:Any], userLoc:CLLocation? ) {
     
         self.init()
         
         self.title = truckStopDict["name"] as? String ?? ""
-        
-        var subtitle = ""
-        
-        if let city = truckStopDict["city"] as? String {
-            subtitle += city + " "
-        }
-        
-        if let state = truckStopDict["state"] as? String {
-            subtitle += state + " "
-        }
-        
-        if let country = truckStopDict["country"] as? String {
-            subtitle += country
-        }
-       
-        self.subtitle = subtitle
         
         if let lat = truckStopDict["lat"] as? String,
            let lon = truckStopDict["lng"] as? String {
@@ -62,6 +52,10 @@ import MapKit
             let loon = Double(lon)
             self.coordinate.latitude = laat!
             self.coordinate.longitude = loon!
+            if let location = userLoc {
+                let loc = CLLocation(latitude: self.coordinate.latitude, longitude: self.coordinate.longitude)
+                self.distance = String(format: "%.1f miles", miles(meters: loc.distance(from: location)))
+            }
         }
         
         self.rawline1 = truckStopDict["rawLine1"] as? String ?? ""
@@ -93,7 +87,7 @@ import MapKit
         return self.truckStopArray.count
     }
     
-    @objc func pins(containing filteredBy:String?=nil) -> [TruckStop] {
+    @objc func pins(containing filteredBy:String?=nil, userLocation:CLLocation?) -> [TruckStop] {
         var pinsArray:[TruckStop] = []
         var searchWords:[String] = []
         var wordFound:[String:Bool] = [:]
@@ -157,7 +151,7 @@ import MapKit
             }
 
             if includeTruckstop {
-                let truckStop = TruckStop(truckStopDict: truckStopInfo)
+                let truckStop = TruckStop(truckStopDict: truckStopInfo, userLoc:userLocation)
                 pinsArray.append(truckStop)
             }
         }

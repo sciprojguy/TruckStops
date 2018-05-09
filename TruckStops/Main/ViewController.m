@@ -9,6 +9,8 @@
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
 
+#import "EnhancedMapView.h"
+
 #import "ViewController.h"
 #import "RestAPI.h"
 #import "TruckStopAnnotationView.h"
@@ -22,7 +24,7 @@ typedef enum {
 
 @interface ViewController () <MKMapViewDelegate, UISearchBarDelegate, CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (weak, nonatomic) IBOutlet MKMapView *stopsMap;
+@property (weak, nonatomic) IBOutlet EnhancedMapView *stopsMap;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *mapMode;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *userTrackingMode;
 
@@ -40,7 +42,8 @@ typedef enum {
 @property (strong, nonatomic) NSTimer *timerTask;
 
 @property (assign, nonatomic) BOOL trackTheUser;
-@property (assign, nonatomic) BOOL pauseUserTracking;
+@property (assign, nonatomic) BOOL savedTrackTheUser;
+@property (nonatomic, assign) BOOL nextRegionChangeIsFromUserInteraction;
 
 @end
 
@@ -84,6 +87,7 @@ typedef enum {
 //MARK: - UI setup
 
 -(void)configureUI {
+
     self.stopsMap.showsUserLocation = YES;
     self.stopsMap.userTrackingMode = MKUserTrackingModeNone;
     self.stopsMap.delegate = self;
@@ -91,7 +95,23 @@ typedef enum {
     self.trackTheUser = YES;
     self.userTrackingMode.selectedSegmentIndex = 0;
     
-    //todo: read settings.plist and get map mode
+    //read settings.plist and get map mode
+    Settings *settings = [Settings shared];
+    NSInteger mapType = [settings mapType];
+    if(Map == mapType) {
+        self.stopsMap.mapType = MKMapTypeStandard;
+        self.mapMode.selectedSegmentIndex = 0;
+    }
+    else {
+        self.stopsMap.mapType = MKMapTypeSatellite;
+        self.mapMode.selectedSegmentIndex = 1;
+    }
+    
+    //todo: add touch up handler in map...
+}
+
+-(void)tapHandler {
+
 }
 
 -(void)configureLocationTracking {
@@ -101,7 +121,6 @@ typedef enum {
     self.locationManager.distanceFilter = 100;  //100m between updates
     self.locationManager.pausesLocationUpdatesAutomatically = YES;
     [self.locationManager requestAlwaysAuthorization];
-    self.pauseUserTracking = NO;
     self.trackTheUser = YES;
 }
 
@@ -109,31 +128,43 @@ typedef enum {
     return self.zoomRadius * 1609.34;
 }
 
--(void)startTrackingLocation:(NSTimer *)timer {
-    NSLog(@"STARTING TRACKING AGAIN");
+-(void)restoreTrackingSetting:(NSTimer *)timer {
     if(self.timerTask) {
         [self.timerTask invalidate];
         self.timerTask = nil;
     }
-    self.pauseUserTracking = NO;
+    self.trackTheUser = self.savedTrackTheUser;
 }
 
 -(void)pauseTrackingFor5Seconds {
-    self.timerTask = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(startTrackingLocation:) userInfo:nil repeats:NO];
-    NSLog(@"PAUSING FOR 5 SECONDS");
-    self.pauseUserTracking = YES;
+    if(self.timerTask) {
+        [self.timerTask invalidate];
+        self.timerTask = nil;
+    }
+    
+    self.timerTask = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(restoreTrackingSetting:) userInfo:nil repeats:NO];
+    self.savedTrackTheUser = self.trackTheUser;
+    self.trackTheUser = NO;
 }
 
 -(void)pauseTrackingFor15Seconds {
-    self.timerTask = [NSTimer scheduledTimerWithTimeInterval:15.0 target:self selector:@selector(startTrackingLocation:) userInfo:nil repeats:NO];
-    NSLog(@"PAUSING FOR 15 SECONDS");
-    self.pauseUserTracking = YES;
+    if(self.timerTask) {
+        [self.timerTask invalidate];
+        self.timerTask = nil;
+    }
+    self.timerTask = [NSTimer scheduledTimerWithTimeInterval:15.0 target:self selector:@selector(restoreTrackingSetting:) userInfo:nil repeats:NO];
+    self.savedTrackTheUser = self.trackTheUser;
+    self.trackTheUser = NO;
 }
 
 -(void)pauseTrackingFor30Seconds {
-    self.timerTask = [NSTimer scheduledTimerWithTimeInterval:30.0 target:self selector:@selector(startTrackingLocation:) userInfo:nil repeats:NO];
-    NSLog(@"PAUSING FOR 30 SECONDS");
-    self.pauseUserTracking = YES;
+    if(self.timerTask) {
+        [self.timerTask invalidate];
+        self.timerTask = nil;
+    }
+    self.timerTask = [NSTimer scheduledTimerWithTimeInterval:30.0 target:self selector:@selector(restoreTrackingSetting:) userInfo:nil repeats:NO];
+    self.savedTrackTheUser = self.trackTheUser;
+    self.trackTheUser = NO;
 }
 
 -(void)stopTrackingLocation {
@@ -172,15 +203,19 @@ dispatch_async( dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), 
 //MARK: - map utility methods
 
 -(void)updateMapPins:(BOOL)fromSearchBar {
+
     //remove old annotations
     NSArray *annotations = [self.stopsMap annotations];
     [self.stopsMap removeAnnotations:annotations];
     
     //add new annotations
-    NSArray *newPins = [self.holderOfTruckstops pinsWithContaining:self.filterString];
+    NSArray *newPins = [self.holderOfTruckstops pinsWithContaining:self.filterString userLocation:self.currentUserLocation];
     [self.stopsMap addAnnotations:newPins];
     
     if(fromSearchBar) {
+    
+        [self pauseTrackingFor30Seconds];
+        
         NSDictionary *stats = [self geoStatsForPins:newPins];
         
         CGFloat minLat = [stats[@"LatMin"] doubleValue];
@@ -201,10 +236,6 @@ dispatch_async( dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), 
 
 //MARK: - map delegate methods
 
--(void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
-    NSLog(@"REGION CHANGED");
-}
-
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
 
     MKAnnotationView *pinView = nil;
@@ -216,6 +247,7 @@ dispatch_async( dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), 
         
         pinView.canShowCallout = YES;
         pinView.detailCalloutAccessoryView = [[TruckStopAnnotationView alloc] initFromAnnotation:annotation];
+        
     }
     else {
         pinView = [[UserLocationMapPin alloc] initWithAnnotation:annotation reuseIdentifier:@"UserLocation"];
@@ -226,6 +258,40 @@ dispatch_async( dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), 
 
 -(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
     [self pauseTrackingFor15Seconds];
+}
+
+//adapted from https://www.transpire.com/insights/blog/mkmapview-change-user-interaction
+
+- (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated
+{
+    UIView* view = mapView.subviews.firstObject;
+    
+    //    Look through gesture recognizers to determine
+    //    whether this region change is from user interaction
+    for(UIGestureRecognizer* recognizer in view.gestureRecognizers)
+    {
+        //    The user caused of this...
+        if(recognizer.state == UIGestureRecognizerStateBegan
+           || recognizer.state == UIGestureRecognizerStateEnded)
+        {
+            self.nextRegionChangeIsFromUserInteraction = YES;
+            break;
+        }
+    }
+}
+
+-(void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
+    if(self.nextRegionChangeIsFromUserInteraction) {
+        self.nextRegionChangeIsFromUserInteraction = NO;
+
+        CLLocationCoordinate2D center = mapView.region.center;
+        CLLocation *newLoc = [[CLLocation alloc] initWithLatitude:center.latitude longitude:center.longitude];
+        self.currentUserLocation = newLoc;
+        CGFloat gpsRadius = MIN(mapView.region.span.latitudeDelta, mapView.region.span.longitudeDelta);
+        self.zoomRadius = [self degreesToMiles:gpsRadius]/2.0;
+        [self updateTruckstopLocations];
+        [self pauseTrackingFor5Seconds];
+    }
 }
 
 //MARK: - search bar delegate methods
@@ -248,10 +314,20 @@ dispatch_async( dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), 
     [self updateMapPins:YES];
 }
 
+//MARK: - utilities
+
+-(CGFloat)degreesToMiles:(CGFloat)degrees {
+    return degrees * 69.0;
+}
+
+-(CGFloat)milesToDegrees:(CGFloat)miles {
+    return miles / 69.0;
+}
+
 //MARK: - button Actions
 
 -(IBAction)zoomToUser:(id)sender {
-   CGFloat degreesIn100miles = (100.0/69.0);
+   CGFloat degreesIn100miles = 2.0 * [self milesToDegrees:100.0];
     MKCoordinateSpan span = MKCoordinateSpanMake(degreesIn100miles, degreesIn100miles);
     MKCoordinateRegion region = MKCoordinateRegionMake(self.currentUserLocation.coordinate, span);
     [self.stopsMap setRegion:region];
@@ -266,6 +342,8 @@ dispatch_async( dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), 
     if(Satellite == selectedIndex) {
         self.stopsMap.mapType = MKMapTypeSatellite;
     }
+    [Settings shared].mapType = selectedIndex;
+    [[Settings shared] save];
 }
 
 //MARK: - get a region all the pins will fit in
@@ -333,8 +411,7 @@ dispatch_async( dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), 
 }
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
-    if(YES == _trackTheUser && NO == _pauseUserTracking) {
-        NSLog(@"MOVING MAP");
+    if(YES == _trackTheUser) {
         [self moveMapToLocation];
     }
 }
